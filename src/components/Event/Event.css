@@ -1,0 +1,36 @@
+.event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .event-card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .event-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .event-details {
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .event-details h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+  }
+  
+  .event-details p {
+    margin: 5px 0;
+  }
+  

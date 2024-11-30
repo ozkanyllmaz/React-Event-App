@@ -1,0 +1,86 @@
+/* Register.css */
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff; /* Daha açık bir arka plan rengi */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px; /* Başlık boyutunu büyüttüm */
+    color: #333; /* Başlık rengi */
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Bileşenler arasındaki boşlukları artırdım */
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #666; /* Etiket rengi */
+    display: block;
+    margin-bottom: 8px; /* Etiket ile input arasındaki boşluğu artırdım */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px; /* Hem sağ hem de sol padding ekledim */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Köşe yuvarlama daha belirgin */
+    background-color: #f9f9f9; /* Input arka plan rengi */
+    box-sizing: border-box; /* Border ve padding'in genişlik hesaplamasına dahil edilmesini sağlar */
+    transition: border-color 0.3s ease-in-out; /* Border renk geçişi ekledim */
+}
+
+.form-group input:focus {
+    border-color: #a00000; /* Focus olduğunda border rengini kırmızı yapıyorum */
+    outline: none; /* Outline'ı kaldırdım */
+}
+
+.register-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #a00000; /* Buton rengi */
+    color: white;
+    border: none;
+    border-radius: 6px; /* Buton köşe yuvarlama */
+    font-size: 18px; /* Buton font boyutu */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hover efekti için geçiş */
+}
+
+.register-button:hover {
+    background-color: #800000; /* Hover durumunda buton rengini koyulaştırdım */
+}
+
+.register-container a {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    color: #a00000; /* Link rengi */
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  

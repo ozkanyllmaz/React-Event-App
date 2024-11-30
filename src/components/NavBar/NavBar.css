@@ -1,0 +1,48 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Sol ve sağdaki elemanlar arasında boşluk bırak */
+    align-items: center; /* Elemanları dikey olarak ortalar */
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #a00000; /* LOGO yazısı rengi */
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex; /* Elemanları yatay sırala */
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Elemanlar arasına boşluk koy */
+  }
+  
+  .navbar-links li {
+    display: inline;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1em;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #a00000; /* Hover rengi */
+  }
+  
+  .navbar-logo {
+    flex: 1; /* Logo sola yaslanır */
+  }
+  
+  .navbar-links {
+    justify-content: flex-end; /* Menü elemanları sağa yaslanır */
+    flex: 2; /* Menü bağlantıları geniş alan kaplar */
+  }
+  
