@@ -73,14 +73,14 @@ h2 {
 }
 
 .success-message {
-    color: green;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  .error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
+  color: green;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+}
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'; // Stil dosyasını dahil ediyoruz
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -26,13 +27,19 @@ const Login = () => {
       if (response.ok) {
         const userData = await response.json();
         console.log('Login successful:', userData);
-        // Giriş başarılı, localStorage'a giriş durumunu kaydediyoruz
-        localStorage.setItem('isLoggedIn', 'true'); // Giriş durumunu sakla
-        navigate('/home'); // Başarılı giriş sonrası anasayfaya yönlendir
+
+    
+        
+        // Kullanıcıyı localStorage'a kaydediyoruz
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', userData.username); // Burada userData.username kullanıyoruz
+        
+        // Başarılı giriş sonrası anasayfaya yönlendir
+        navigate('/');
       } else {
         const errorData = await response.text();
         console.error('Login failed:', errorData);
-        setErrorMessage(errorData);  // Hata mesajı
+        setErrorMessage(errorData);
       }
     } catch (error) {
       console.error('Error during login:', error);
@@ -66,6 +73,10 @@ const Login = () => {
         </div>
         <button type="submit" className="login-button">Login</button>
       </form>
+      {/* Forgot password link */}
+      <div className="forgot-password">
+        <a href="/forgot-password">Forgot your password?</a>
+      </div>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );

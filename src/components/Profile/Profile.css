@@ -1,0 +1,56 @@
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .edit-button {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .info-row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-row label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .info-row input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .info-row input:disabled {
+    background-color: #f2f2f2;
+  }
+  

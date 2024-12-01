@@ -1,48 +1,35 @@
-/* Navbar.css */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Sol ve sağdaki elemanlar arasında boşluk bırak */
-    align-items: center; /* Elemanları dikey olarak ortalar */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
     padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
   }
   
   .navbar-logo {
-    font-size: 1.5em;
+    font-size: 24px;
     font-weight: bold;
-    color: #a00000; /* LOGO yazısı rengi */
   }
   
   .navbar-links {
     list-style: none;
-    display: flex; /* Elemanları yatay sırala */
+    display: flex;
     margin: 0;
     padding: 0;
-    gap: 20px; /* Elemanlar arasına boşluk koy */
   }
   
   .navbar-links li {
-    display: inline;
+    margin-left: 20px;
   }
   
   .navbar-links a {
     text-decoration: none;
-    color: black;
-    font-size: 1em;
-    transition: color 0.3s ease;
+    color: white;
+    transition: color 0.3s;
   }
   
   .navbar-links a:hover {
-    color: #a00000; /* Hover rengi */
-  }
-  
-  .navbar-logo {
-    flex: 1; /* Logo sola yaslanır */
-  }
-  
-  .navbar-links {
-    justify-content: flex-end; /* Menü elemanları sağa yaslanır */
-    flex: 2; /* Menü bağlantıları geniş alan kaplar */
+    color: #ff5722;
   }
   

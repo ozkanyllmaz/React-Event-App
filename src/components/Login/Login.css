@@ -6,42 +6,42 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #ffffff; /* Açık bir arka plan rengi */
+    background-color: #ffffff; /* Daha açık bir arka plan rengi */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     text-align: center;
-    font-size: 28px; /* Başlık boyutu */
+    font-size: 28px; /* Başlık boyutunu büyüttüm */
     color: #333; /* Başlık rengi */
     margin-bottom: 30px;
 }
 
 .form-group {
-    margin-bottom: 20px; /* Bileşenler arasındaki boşluklar */
+    margin-bottom: 20px; /* Bileşenler arasındaki boşlukları artırdım */
 }
 
 .form-group label {
     font-size: 14px;
     color: #666; /* Etiket rengi */
     display: block;
-    margin-bottom: 8px; /* Etiket ile input arasındaki boşluk */
+    margin-bottom: 8px; /* Etiket ile input arasındaki boşluğu artırdım */
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px;
+    padding: 12px; /* Hem sağ hem de sol padding ekledim */
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 6px; /* Input köşe yuvarlama */
+    border-radius: 6px; /* Köşe yuvarlama daha belirgin */
     background-color: #f9f9f9; /* Input arka plan rengi */
-    box-sizing: border-box; /* Border ve padding'in genişlik hesaplamasına dahil edilmesi */
-    transition: border-color 0.3s ease-in-out; /* Border renk geçişi */
+    box-sizing: border-box; /* Border ve padding'in genişlik hesaplamasına dahil edilmesini sağlar */
+    transition: border-color 0.3s ease-in-out; /* Border renk geçişi ekledim */
 }
 
 .form-group input:focus {
-    border-color: #a00000; /* Focus olduğunda border rengini kırmızı yap */
-    outline: none; /* Outline'ı kaldır */
+    border-color: #a00000; /* Focus olduğunda border rengini kırmızı yapıyorum */
+    outline: none; /* Outline'ı kaldırdım */
 }
 
 .login-button {
@@ -53,33 +53,16 @@ h2 {
     border-radius: 6px; /* Buton köşe yuvarlama */
     font-size: 18px; /* Buton font boyutu */
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Hover efekti */
+    transition: background-color 0.3s ease; /* Hover efekti için geçiş */
 }
 
 .login-button:hover {
-    background-color: #800000; /* Hover durumunda buton rengini koyulaştır */
-}
-
-.login-container a {
-    text-align: center;
-    display: block;
-    margin-top: 15px;
-    color: #a00000; /* Link rengi */
-    text-decoration: none;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
+    background-color: #800000; /* Hover durumunda buton rengini koyulaştırdım */
 }
 
 .error-message {
     color: red;
     font-weight: bold;
     margin-top: 20px;
-}
-
-.success-message {
-    color: green;
-    font-weight: bold;
-    margin-top: 20px;
+    text-align: center; /* Hata mesajını ortaya hizalar */
 }

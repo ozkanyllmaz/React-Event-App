@@ -1,74 +1,141 @@
-import React, { useState } from 'react';
-import './Register.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Register.css"; // Stil dosyanızı buraya ekleyin
 
-const Register = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
+function Register() {
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    phoneNumber: "",
+    gender: "", // Gender'ı ekledik
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const registerData = {
-      userName: username,
-      password: password,
-    };
-
     try {
-      const response = await fetch('http://localhost:8080/users/register', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/users/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(registerData),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        const userData = await response.json();
-        console.log('Registration successful:', userData);
-        // Kayıt başarılı, giriş sayfasına yönlendir
-        navigate('/login');
+        const data = await response.json();
+        console.log("Kullanıcı başarıyla kaydedildi:", data);
+        window.alert("Kayıt başarılı!"); // Başarı mesajını alert olarak göster
       } else {
-        const errorData = await response.text();
-        console.error('Registration failed:', errorData);
-        setErrorMessage(errorData);  // Hata mesajı
+        const errorData = await response.json();
+        console.error("Kayıt sırasında bir hata oluştu:", errorData);
+        window.alert("Kayıt sırasında bir hata oluştu: " + errorData.message); // Hata mesajını alert olarak göster
       }
     } catch (error) {
-      console.error('Error during registration:', error);
-      setErrorMessage('Something went wrong. Please try again.');
+      console.error("Bir hata oluştu:", error);
+      window.alert("Bir hata oluştu. Lütfen tekrar deneyin.");
     }
   };
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
+      <h2>Kayıt Ol</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
+          <label>Kullanıcı Adı</label>
+          <input
+            type="text"
+            name="userName"
+            value={formData.userName}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <button type="submit" className="register-button">Register</button>
+        <div className="form-group">
+          <label>Şifre</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Ad</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Soyad</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Doğum Tarihi</label>
+          <input
+            type="date"
+            name="birthDate"
+            value={formData.birthDate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Telefon Numarası</label>
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Cinsiyet</label>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Cinsiyet Seçin</option>
+            <option value="ERKEK">Erkek</option>
+            <option value="KADIN">Kadın</option>
+          </select>
+        </div>
+
+        <button type="submit" className="register-button">Kayıt Ol</button>
       </form>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
-};
+}
 
 export default Register;
