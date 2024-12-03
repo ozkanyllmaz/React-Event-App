@@ -1,0 +1,31 @@
+/* EventDetail.css */
+.event-detail-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .event-detail-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .event-detail-info p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .event-detail-info strong {
+    font-weight: bold;
+  }
+
+  #map {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  
+  

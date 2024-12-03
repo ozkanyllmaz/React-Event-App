@@ -28,11 +28,10 @@ const Login = () => {
         const userData = await response.json();
         console.log('Login successful:', userData);
 
-    
-        
         // Kullanıcıyı localStorage'a kaydediyoruz
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', userData.username); // Burada userData.username kullanıyoruz
+        localStorage.setItem('userId', userData.userId); 
         
         // Başarılı giriş sonrası anasayfaya yönlendir
         navigate('/');

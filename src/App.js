@@ -7,6 +7,8 @@ import Login from './components/Login/Login'; // Login bileşenini import edin
 import Register from './components/Register/Register'; // Register bileşenini import edin
 import Profile from './components/Profile/Profile';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword ';
+import CreateEvent from './components/CreateEvent/CreateEvent';
+import EventDetail from './components/EventDetail/EventDetail';
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
           <Route path="/giris" element={<Login />} /> 
           <Route path="/kayitol" element={<Register />} /> 
           <Route path="/profile" element={<Profile />} />
+          <Route path="/event" element={<CreateEvent />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/event/detail/:eventId" element={<EventDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
