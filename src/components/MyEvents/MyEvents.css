@@ -1,0 +1,33 @@
+.edit-event-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  .edit-event-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-event-form input,
+  .edit-event-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-event-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 0 10px; /* Sağ tarafta boşluk */
+  }
+  
+  .edit-event-form button:hover {
+    background-color: #45a049;
+  }
+  

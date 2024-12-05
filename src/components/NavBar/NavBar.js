@@ -22,6 +22,7 @@ const Navbar = () => {
         {isLoggedIn ? (
           <>
             <li><a href="/profile">Profil</a></li>
+            <li><a href="/etkinliklerim">Etkinliklerim</a></li>
             <li><a href="/event">Etkinlik Oluştur</a></li>
             <li><button className="logout-button" onClick={handleLogout}>Çıkış</button></li>
           </>

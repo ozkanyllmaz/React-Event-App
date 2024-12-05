@@ -31,42 +31,63 @@ const CreateEvent = () => {
   const [location, setLocation] = useState('');
   const [category, setCategory] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);  // Formun gönderilme durumu
+  const [message, setMessage] = useState(''); // Mesaj durumu
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const newEvent = {
-      eventName,
-      description,
-      date,
-      time,
-      duration,
-      location,
-      category, // category state'i de gönderiliyor
+  
+    const loggedInUserId = localStorage.getItem('userId'); // Dinamik olarak kullanıcı ID'sini çek
+    if (!loggedInUserId) {
+      alert('Kullanıcı girişi yapılmamış! Lütfen giriş yapınız.');
+      return;
+    }
+  
+    const eventData = {
+      eventName: eventName,  // Etkinlik adı
+      description: description, // Açıklama
+      date: date, // Tarih
+      time: time, // Saat
+      duration: duration, // Süre
+      location: location, // Lokasyon
+      category: category, // Kategori
     };
-
+  
     try {
       const response = await fetch('http://localhost:8080/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'userId': loggedInUserId, // Giriş yapan kullanıcı ID'si header olarak gönderiliyor
         },
-        body: JSON.stringify(newEvent),
+        body: JSON.stringify(eventData), // Veriler JSON formatında gönderiliyor
       });
-
-      if (response.ok) {
-        // Etkinlik başarılı bir şekilde kaydedildiyse, kullanıcıyı etkinlik sayfasına yönlendir
-        navigate('/');
-      } else {
-        const errorData = await response.text();
-        setErrorMessage(`Error: ${errorData}`);
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Backend Error:', errorText);
+        throw new Error(errorText || 'Something went wrong. Please try again.');
       }
+  
+      const data = await response.json(); // Backend'den dönen başarılı yanıt
+      console.log('Event created successfully:', data);
+      alert('Etkinlik başarıyla oluşturuldu!');
+      // Başka işlemler yapabilirsiniz (örn. sayfa yönlendirme)
+  
     } catch (error) {
       console.error('Error creating event:', error);
-      setErrorMessage('Something went wrong. Please try again.');
-    }
+      alert(`Etkinlik oluşturulamadı: ${error.message}`);
+    } finally {
+        setIsSubmitting(false);  // İşlem tamamlandığında butonu tekrar etkinleştir
+      }
   };
+  
+  
+  
+  
+  
+  
 
   return (
     <div className="create-event-container">
@@ -140,7 +161,16 @@ const CreateEvent = () => {
             ))}
           </select>
         </div>
-        <button type="submit" className="create-event-button">
+        {/* Mesaj Gönderme Alanı */}
+        <div className="form-group">
+          <label>Message:</label>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Optional message to participants"
+          />
+        </div>
+        <button type="submit" className="create-event-button" disabled={isSubmitting}>
           Create Event
         </button>
       </form>

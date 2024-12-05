@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; // Stil dosyasını dahil ediyoruz
 
@@ -6,16 +6,33 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [recaptchaToken, setRecaptchaToken] = useState(null); // reCAPTCHA token'ı
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // reCAPTCHA scripti yüklendiğinde, ready() fonksiyonu çağrılacak
+    window.grecaptcha.enterprise.ready(() => {
+      // reCAPTCHA'yı hazır hale getirme
+    });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginData = {
-      userName: username,
-      password: password,
-    };
 
+    // reCAPTCHA token'ını alıyoruz
     try {
+      const token = await window.grecaptcha.enterprise.execute('6LeCMJIqAAAAAGSk5edLcKIuKxVLvY-0dgByoiCP', {
+        action: 'LOGIN',
+      });
+      setRecaptchaToken(token); // Token'ı state'e kaydediyoruz
+
+      // Giriş verilerini hazırlıyoruz
+      const loginData = {
+        userName: username,
+        password: password,
+        recaptchaToken: token,  // reCAPTCHA token'ını da ekliyoruz
+      };
+
       const response = await fetch('http://localhost:8080/users/login', {
         method: 'POST',
         headers: {
@@ -26,15 +43,17 @@ const Login = () => {
 
       if (response.ok) {
         const userData = await response.json();
-        console.log('Login successful:', userData);
-
-        // Kullanıcıyı localStorage'a kaydediyoruz
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('username', userData.username); // Burada userData.username kullanıyoruz
-        localStorage.setItem('userId', userData.userId); 
+        console.log('Login successful:', userData);  // Backend'den gelen yanıtı loglayın
         
-        // Başarılı giriş sonrası anasayfaya yönlendir
-        navigate('/');
+        if (userData && userData.id) {
+          // Kullanıcıyı localStorage'a kaydediyoruz
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userId', userData.id);  // id'yi kaydediyoruz
+          navigate('/'); // Başarılı giriş sonrası anasayfaya yönlendir
+        } else {
+          console.error('UserId (id) is missing in the response');
+          setErrorMessage('User ID is missing in the response');
+        }
       } else {
         const errorData = await response.text();
         console.error('Login failed:', errorData);

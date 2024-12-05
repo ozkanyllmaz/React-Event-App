@@ -1,56 +1,83 @@
 .profile-container {
-    max-width: 900px;
+    width: 60%;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
   }
   
-  .profile-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  h1 {
+    text-align: center;
+    color: #333;
   }
   
   .profile-image {
-    width: 120px;
-    height: 120px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image img {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    margin-right: 20px;
+    object-fit: cover;
   }
   
-  .edit-button {
-    background-color: #6c63ff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .profile-info {
+  .profile-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 15px;
+    margin-bottom: 20px;
   }
   
-  .info-row {
+  .profile-field {
     display: flex;
     flex-direction: column;
   }
   
-  .info-row label {
-    margin-bottom: 5px;
+  .profile-field label {
     font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
   }
   
-  .info-row input {
-    padding: 8px;
-    border-radius: 5px;
+  .profile-field input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  .profile-field input:disabled {
+    background-color: #f0f0f0;
     border: 1px solid #ddd;
-    font-size: 14px;
-    width: 100%;
   }
   
-  .info-row input:disabled {
-    background-color: #f2f2f2;
+  .profile-field input:focus {
+    border-color: #4A90E2;
+    outline: none;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #357ABD;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
   

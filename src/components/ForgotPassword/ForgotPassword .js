@@ -16,13 +16,16 @@ const ForgotPassword = () => {
         body: JSON.stringify({ email }),
       });
 
+      // Backend'den gelen yanıtı kontrol et
       if (response.ok) {
         setMessage('A password reset link has been sent to your email.');
       } else {
-        const errorData = await response.text();
-        setMessage(`Error: ${errorData}`);
+        // Eğer yanıt başarısızsa, hata mesajını al ve göster
+        const errorData = await response.json();
+        setMessage(`Error: ${errorData.message || 'An error occurred. Please try again.'}`);
       }
     } catch (error) {
+      // Sunucuya bağlantı kurulamazsa veya başka bir hata oluşursa
       setMessage('Something went wrong. Please try again.');
     }
   };
